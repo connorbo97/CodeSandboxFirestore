@@ -84,7 +84,10 @@ requirePolyfills().then(() => {
     const id = getId();
     window
       .fetch(host + `/api/v1/sandboxes/${id}`)
-      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        return res.json();
+      })
       .then(res => {
         const camelized = camelizeKeys(res);
         camelized.data.npmDependencies = res.data.npm_dependencies;

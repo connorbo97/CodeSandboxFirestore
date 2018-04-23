@@ -1,0 +1,8 @@
+packages/app/src/app/store/modules/files/actions.js
+	Location of api calls
+
+packages/app/src/app/store/index.js
+	Where api in actions.js is defined
+
+packages/app/src/app/store/providers/Api.js
+	Where ApiProvider is defined

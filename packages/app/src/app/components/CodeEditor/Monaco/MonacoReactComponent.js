@@ -89,7 +89,6 @@ class MonacoEditor extends React.PureComponent {
       overflow: 'hidden',
       position: 'absolute',
     };
-
     return (
       <div
         ref={this.assignRef}

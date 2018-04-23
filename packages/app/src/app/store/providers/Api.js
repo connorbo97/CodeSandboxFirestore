@@ -5,7 +5,8 @@ import { Provider } from 'cerebral';
 import sendError from 'app/utils/error';
 import { addNotification } from '../factories';
 
-const API_ROOT = '/api/v1';
+const API_ROOT = 'http://localhost:8082/api/v1';
+// const API_ROOT = '/api/v1';
 
 function createHeaders({ state, jwt }) {
   const foundJwt = state.get('jwt') || jwt.get();
