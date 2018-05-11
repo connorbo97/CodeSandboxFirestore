@@ -16,7 +16,15 @@ import NotOwnedSandboxInfo from './items/NotOwnedSandboxInfo';
 import ConnectionNotice from './ConnectionNotice';
 import Advertisement from './Advertisement';
 
-import { Container, ContactContainer, ItemTitle } from './elements';
+import { Container, ContactContainer, ItemTitle, Left } from './elements';
+
+import Action from './Action';
+import Save from 'react-icons/lib/md/save';
+import Fork from 'react-icons/lib/go/repo-forked';
+import Download from 'react-icons/lib/md/file-download';
+import ShareIcon from 'react-icons/lib/md/share';
+import SettingsIcon from 'react-icons/lib/md/settings';
+import PlusIcon from 'react-icons/lib/go/plus';
 
 const idToItem = {
   project: ProjectInfo,
@@ -26,7 +34,7 @@ const idToItem = {
   config: ConfigurationFiles,
 };
 
-function Workspace({ store }) {
+function Workspace({ store, signals }) {
   const sandbox = store.editor.currentSandbox;
   const preferences = store.preferences;
 
@@ -47,23 +55,69 @@ function Workspace({ store }) {
       </div>
       {!preferences.settings.zenMode && (
         <div>
-          {!store.isPatron && !sandbox.owned && <Advertisement />}
           <ContactContainer>
-            <SocialInfo style={{ display: 'inline-block' }} />
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                float: 'right',
-                fontSize: '.6rem',
-                height: 28,
-                verticalAlign: 'middle',
-                fontWeight: 600,
-                color: 'rgba(255, 255, 255, 0.3)',
-              }}
-            >
-              {VERSION}
-            </div>
+            <Left>
+              <Action
+                onClick={() => signals.editor.forkSandboxClicked()}
+                tooltip="Fork"
+                Icon={Fork}
+              />
+
+              {/*use title="Share" to make it have a tag next to the image*/}
+
+              <Action
+                tooltip="Share"
+                Icon={ShareIcon}
+                onClick={() =>
+                  signals.modalOpened({
+                    modal: 'share',
+                  })
+                }
+              />
+
+              {(sandbox.owned || !store.editor.isAllModulesSynced) && (
+                <Action
+                  onClick={
+                    store.editor.isAllModulesSynced
+                      ? null
+                      : () => signals.editor.saveClicked()
+                  }
+                  placeholder={
+                    store.editor.isAllModulesSynced
+                      ? 'All modules are saved'
+                      : false
+                  }
+                  tooltip="Save"
+                  Icon={Save}
+                />
+              )}
+
+              <Action
+                tooltip="Download"
+                Icon={Download}
+                onClick={() => signals.editor.createZipClicked()}
+              />
+              <Action
+                onClick={() =>
+                  signals.modalOpened({
+                    modal: 'newSandbox',
+                  })
+                }
+                tooltip="Create New Sandbox"
+                Icon={PlusIcon}
+              />
+              {!store.isLoggedIn && (
+                <Action
+                  onClick={() =>
+                    signals.modalOpened({
+                      modal: 'preferences',
+                    })
+                  }
+                  tooltip="Preferences"
+                  Icon={SettingsIcon}
+                />
+              )}
+            </Left>
           </ContactContainer>
           <ConnectionNotice />
         </div>

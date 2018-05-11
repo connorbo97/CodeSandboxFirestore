@@ -89,24 +89,6 @@ function Header({ store, signals }) {
       </Left>
 
       <Right>
-        <div style={{ marginRight: '0.5rem', fontSize: '.875rem' }}>
-          <HeaderSearchBar />
-        </div>
-
-        {!store.isLoggedIn ||
-          (!store.isPatron && (
-            <Action
-              href={patronUrl()}
-              tooltip="Support CodeSandbox"
-              Icon={PatronBadge}
-              iconProps={{
-                width: 16,
-                height: 32,
-                transform: 'scale(1.5, 1.5)',
-              }}
-            />
-          ))}
-
         <Action
           onClick={() =>
             signals.modalOpened({

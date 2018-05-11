@@ -11,32 +11,6 @@ function SandboxActions({ store, signals }) {
 
   return (
     <div>
-      <WorkspaceSubtitle>Set Sandbox Privacy</WorkspaceSubtitle>
-      {!store.isPatron && (
-        <PatronMessage>
-          Having private and unlisted Sandboxes is available as a{' '}
-          <a href="/patron" target="_blank">
-            Patron
-          </a>.
-        </PatronMessage>
-      )}
-      {store.isPatron && (
-        <WorkspaceInputContainer>
-          <PrivacySelect
-            value={sandbox.privacy}
-            onChange={event =>
-              signals.workspace.sandboxPrivacyChanged({
-                privacy: Number(event.target.value),
-              })
-            }
-          >
-            <option value={0}>Public</option>
-            <option value={1}>Unlisted (only available by url)</option>
-            <option value={2}>Private</option>
-          </PrivacySelect>
-        </WorkspaceInputContainer>
-      )}
-
       <WorkspaceInputContainer style={{ fontSize: '1rem' }}>
         <Button
           block

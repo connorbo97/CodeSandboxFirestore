@@ -16,8 +16,6 @@ import { Container, IconContainer } from './elements';
 const IDS_TO_ICONS = {
   project: InfoIcon,
   files: FilesIcon,
-  github: GitHubIcon,
-  deploy: RocketIcon,
   config: ConfigurationIcon,
 };
 

@@ -38,16 +38,17 @@ function ContentSplit({ signals, store, match }) {
           bottom: 0,
         }}
       >
-        {!store.preferences.settings.zenMode && <Header />}
+        {false && !store.preferences.settings.zenMode && <Header />}
 
         <Fullscreen>
           {!hideNavigation && <Navigation />}
 
+          {/*original value for top was store.preferences.settings.zenMode ? 0 : '3rem'*/}
           <div
             style={{
               position: 'fixed',
               left: hideNavigation ? 0 : 'calc(4rem + 1px)',
-              top: store.preferences.settings.zenMode ? 0 : '3rem',
+              top: 0,
               right: 0,
               bottom: 0,
             }}

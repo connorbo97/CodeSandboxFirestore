@@ -172,3 +172,8 @@ export const Description = styled.div`
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.8);
 `;
+
+export const Left = styled.div`
+  display: flex;
+  height: 100%;
+`;
