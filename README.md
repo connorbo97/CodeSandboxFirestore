@@ -1,3 +1,11 @@
+#What
+Fork of [CodeSandbox] (https://github.com/CompuIves/codesandbox-client). Connects to [this backend] (https://github.com/connorbo97/codesandbox-api) as a replacement. At the moment minor UI changes and
+feature removals.
+
+#Why
+Desire to have an all-purpose web coding platform at 9 Dots that uses Google Firestore for data storage.
+
+# Original README
 # [CodeSandbox](https://codesandbox.io) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/KE3TbEZ) [![All Contributors](https://img.shields.io/badge/all_contributors-50-orange.svg?style=flat-square)](#contributors) [![Build Status](https://travis-ci.org/CompuIves/codesandbox-client.svg?branch=master)](https://travis-ci.org/CompuIves/codesandbox-client) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](http://www.firsttimersonly.com/)
 
 An online code editor tailored for web applications.
