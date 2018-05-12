@@ -20,7 +20,10 @@ function ContentSplit({ signals, store, match }) {
     (store.preferences.settings.zenMode &&
       !store.workspace.openedWorkspaceItem) ||
     !sandboxOwned;
-
+  console.log(store);
+  console.log(sandbox);
+  console.log(store.workspace);
+  console.log(store.editor);
   return (
     <ThemeProvider
       theme={{

@@ -192,10 +192,10 @@ class Project extends React.Component {
             />
           </Item>
         )}
-        <StatsContainer>
+        {/*<StatsContainer>
           <Stats sandbox={sandbox} />
         </StatsContainer>
-
+        */}
         <Item>
           {editable ? (
             <EditableTags

@@ -175,5 +175,6 @@ export const Description = styled.div`
 
 export const Left = styled.div`
   display: flex;
-  height: 100%;
+  justify-content: space-evenly;
+  padding: 20px 10px 0px;
 `;

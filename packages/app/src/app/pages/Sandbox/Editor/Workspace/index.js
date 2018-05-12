@@ -49,76 +49,75 @@ function Workspace({ store, signals }) {
   const item = workspaceItems.find(i => i.id === currentItem);
   return (
     <Container>
+      <Left>
+        <Action
+          onClick={() => signals.editor.forkSandboxClicked()}
+          tooltip="Fork"
+          Icon={Fork}
+        />
+
+        {/*use title="Share" to make it have a tag next to the image*/}
+
+        <Action
+          tooltip="Share"
+          Icon={ShareIcon}
+          onClick={() =>
+            signals.modalOpened({
+              modal: 'share',
+            })
+          }
+        />
+
+        {(sandbox.owned || !store.editor.isAllModulesSynced) && (
+          <Action
+            onClick={
+              store.editor.isAllModulesSynced
+                ? null
+                : () => signals.editor.saveClicked()
+            }
+            placeholder={
+              store.editor.isAllModulesSynced ? 'All modules are saved' : false
+            }
+            tooltip="Save"
+            Icon={Save}
+          />
+        )}
+
+        <Action
+          tooltip="Download"
+          Icon={Download}
+          onClick={() => signals.editor.createZipClicked()}
+        />
+        <Action
+          onClick={() =>
+            signals.modalOpened({
+              modal: 'newSandbox',
+            })
+          }
+          tooltip="Create New Sandbox"
+          Icon={PlusIcon}
+        />
+        {!store.isLoggedIn && (
+          <Action
+            onClick={() =>
+              signals.modalOpened({
+                modal: 'preferences',
+              })
+            }
+            tooltip="Preferences"
+            Icon={SettingsIcon}
+          />
+        )}
+      </Left>
       {sandbox.owned && <ItemTitle>{item.name}</ItemTitle>}
-      <div style={{ flex: 1 }}>
-        <Component />
+      <div style={{ position: 'relative', flex: 1 }}>
+        <Container>
+          <Component />
+        </Container>
       </div>
       {!preferences.settings.zenMode && (
         <div>
-          <ContactContainer>
-            <Left>
-              <Action
-                onClick={() => signals.editor.forkSandboxClicked()}
-                tooltip="Fork"
-                Icon={Fork}
-              />
-
-              {/*use title="Share" to make it have a tag next to the image*/}
-
-              <Action
-                tooltip="Share"
-                Icon={ShareIcon}
-                onClick={() =>
-                  signals.modalOpened({
-                    modal: 'share',
-                  })
-                }
-              />
-
-              {(sandbox.owned || !store.editor.isAllModulesSynced) && (
-                <Action
-                  onClick={
-                    store.editor.isAllModulesSynced
-                      ? null
-                      : () => signals.editor.saveClicked()
-                  }
-                  placeholder={
-                    store.editor.isAllModulesSynced
-                      ? 'All modules are saved'
-                      : false
-                  }
-                  tooltip="Save"
-                  Icon={Save}
-                />
-              )}
-
-              <Action
-                tooltip="Download"
-                Icon={Download}
-                onClick={() => signals.editor.createZipClicked()}
-              />
-              <Action
-                onClick={() =>
-                  signals.modalOpened({
-                    modal: 'newSandbox',
-                  })
-                }
-                tooltip="Create New Sandbox"
-                Icon={PlusIcon}
-              />
-              {!store.isLoggedIn && (
-                <Action
-                  onClick={() =>
-                    signals.modalOpened({
-                      modal: 'preferences',
-                    })
-                  }
-                  tooltip="Preferences"
-                  Icon={SettingsIcon}
-                />
-              )}
-            </Left>
-          </ContactContainer>
+          <ContactContainer />
           <ConnectionNotice />
         </div>
       )}
