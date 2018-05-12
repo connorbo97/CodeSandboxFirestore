@@ -88,7 +88,7 @@ function Workspace({ store, signals }) {
           Icon={Download}
           onClick={() => signals.editor.createZipClicked()}
         />
-        <Action
+        {/*}<Action
           onClick={() =>
             signals.modalOpened({
               modal: 'newSandbox',
@@ -96,7 +96,7 @@ function Workspace({ store, signals }) {
           }
           tooltip="Create New Sandbox"
           Icon={PlusIcon}
-        />
+        />*/}
         {!store.isLoggedIn && (
           <Action
             onClick={() =>
